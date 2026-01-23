@@ -49,19 +49,21 @@ import { AnimationFrame } from './components/AnimationFrame'
 function LoginPage() {
   return (
     <div className="flex min-h-screen bg-black">
-      {/* Animation on the left side */}
-      <div className="relative w-1/2 h-screen overflow-hidden">
-        <AnimationFrame width="50vw" height="100vh" />
-      </div>
-
-      {/* Login form on the right side */}
+      {/* Login form on the left side */}
       <div className="w-1/2 flex items-center justify-center">
         {/* Your login form here */}
+      </div>
+
+      {/* Animation on the right side */}
+      <div className="relative w-1/2 h-screen overflow-hidden">
+        <AnimationFrame width="50vw" height="100vh" />
       </div>
     </div>
   )
 }
 ```
+
+**Figma design reference:** [KFC-WEB-v0.1](https://www.figma.com/design/st9TTT5sd3gGQkOKIS4i6K/KFC-WEB-v0.1?node-id=10655-22439&m=dev)
 
 > **Note:** The live demo uses `width="100vw"` for preview purposes. For the actual login page implementation, use `width="50vw"` to display the animation on half of the screen.
 
