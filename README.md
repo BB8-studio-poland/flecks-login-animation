@@ -39,18 +39,31 @@ npm run deploy
 
 ## Component Usage
 
+The `AnimationFrame` component accepts `width` and `height` props to control its size.
+
+**For the login page (50% width):**
+
 ```tsx
 import { AnimationFrame } from './components/AnimationFrame'
 
 function LoginPage() {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <AnimationFrame />
-      {/* Your login form here */}
+    <div className="flex min-h-screen bg-black">
+      {/* Animation on the left side */}
+      <div className="relative w-1/2 h-screen overflow-hidden">
+        <AnimationFrame width="50vw" height="100vh" />
+      </div>
+
+      {/* Login form on the right side */}
+      <div className="w-1/2 flex items-center justify-center">
+        {/* Your login form here */}
+      </div>
     </div>
   )
 }
 ```
+
+> **Note:** The live demo uses `width="100vw"` for preview purposes. For the actual login page implementation, use `width="50vw"` to display the animation on half of the screen.
 
 ## Animation Details
 
