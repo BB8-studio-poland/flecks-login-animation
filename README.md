@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# Flecks Login Animation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Animated login page background component for the Flecks security client.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**[View Demo](https://bb8-studio-poland.github.io/flecks-login-animation/)**
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **40-second looping animation** - Flecks move between spread and centered positions
+- **Parallax cursor interaction** - Elements shift based on mouse position with depth layers
+- **Rotation effect** - Container rotates subtly based on cursor corner position
+- **Spring physics** - Smooth, natural movement using Framer Motion springs
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Framer Motion
+- TailwindCSS 4
+- Vite
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Install dependencies
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Component Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { AnimationFrame } from './components/AnimationFrame'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function LoginPage() {
+  return (
+    <div className="relative w-full h-screen overflow-hidden">
+      <AnimationFrame />
+      {/* Your login form here */}
+    </div>
+  )
+}
 ```
+
+## Animation Details
+
+### Flecks Movement
+- 13 individual fleck elements with different sizes and blur levels
+- 4-frame keyframe animation: spread → center → spread (mirrored) → center
+- Each frame lasts 5 seconds (20s total cycle, loops seamlessly)
+
+### Parallax Effect
+- Depth values range from 0.15 (background) to 0.7 (foreground)
+- Background flecks (large, blurry) move less
+- Foreground flecks (small, sharp) move more
+- Maximum offset: 150px
+
+### Rotation Effect
+- Base rotation: 30°
+- Cursor right → clockwise rotation (up to +15°)
+- Cursor left → counter-clockwise rotation (up to -15°)
+- Top corners amplify rotation, bottom corners reduce it
+
+## Project Structure
+
+```
+src/components/AnimationFrame/
+├── index.ts              # Clean export
+├── AnimationFrame.tsx    # Main container
+├── Flecks.tsx            # Animated flecks with parallax
+├── Logo.tsx              # Centered logo
+├── R3Vectors.tsx         # Static decorative vectors
+└── assets/               # SVG assets from Figma
+```
+
+## License
+
+Private - BB8 Studio Poland
