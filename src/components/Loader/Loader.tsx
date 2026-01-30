@@ -19,13 +19,13 @@ const CONTAINER_HEIGHT = 52
 const CENTER_X = CONTAINER_WIDTH / 2 // 100
 const CENTER_Y = CONTAINER_HEIGHT / 2 // 26
 
-// Element dimensions from Figma (rounded to full pixels)
+// Element dimensions (with stroke padding)
 const elements = {
-  L2: { width: 37, height: 33 },
-  L1: { width: 13, height: 11 },
+  L2: { width: 39, height: 35 },
+  L1: { width: 15, height: 13 },
   '00': { width: 5, height: 5 },
-  R1: { width: 21, height: 19 },
-  R2: { width: 29, height: 26 },
+  R1: { width: 23, height: 21 },
+  R2: { width: 31, height: 28 },
 }
 
 // Helper: convert top-left position to center-based position
@@ -108,7 +108,7 @@ export function Loader({ className = '', showText = true }: LoaderProps) {
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <div
-        className="relative"
+        className="relative overflow-hidden"
         style={{
           width: CONTAINER_WIDTH,
           height: CONTAINER_HEIGHT,
