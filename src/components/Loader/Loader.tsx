@@ -91,14 +91,13 @@ const colorKeyframes = {
 }
 
 // Easing: Figma uses EASE_IN_AND_OUT for each segment
-// When using times array, we need to specify easing per segment
-const easeInOut = [0.42, 0, 0.58, 1]
+const easeInOut: [number, number, number, number] = [0.42, 0, 0.58, 1]
 
 // Duration per transition
 const TRANSITION_DURATION = 1 // 1 second per step
 
 // Easing array for 4 segments (between 5 keyframes)
-const segmentEasings = [easeInOut, easeInOut, easeInOut, easeInOut]
+const segmentEasings: [number, number, number, number][] = [easeInOut, easeInOut, easeInOut, easeInOut]
 
 interface LoaderProps {
   className?: string
