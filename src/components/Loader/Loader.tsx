@@ -101,17 +101,19 @@ const segmentEasings: [number, number, number, number][] = [easeInOut, easeInOut
 
 interface LoaderProps {
   className?: string
+  showText?: boolean
 }
 
-export function Loader({ className = '' }: LoaderProps) {
+export function Loader({ className = '', showText = true }: LoaderProps) {
   return (
-    <div
-      className={`relative ${className}`}
-      style={{
-        width: CONTAINER_WIDTH,
-        height: CONTAINER_HEIGHT,
-      }}
-    >
+    <div className={`flex flex-col items-center ${className}`}>
+      <div
+        className="relative"
+        style={{
+          width: CONTAINER_WIDTH,
+          height: CONTAINER_HEIGHT,
+        }}
+      >
       {/* L2 - Large left fleck */}
       <motion.img
         src={loaderL2}
@@ -242,6 +244,23 @@ export function Loader({ className = '' }: LoaderProps) {
           times: [0, 0.25, 0.5, 0.75, 1],
         }}
       />
+      </div>
+      {showText && (
+        <span
+          style={{
+            marginTop: 12,
+            color: '#737373',
+            fontFamily: 'Geist, sans-serif',
+            fontSize: 12,
+            fontWeight: 400,
+            lineHeight: '12px',
+            letterSpacing: '1.2px',
+            textTransform: 'uppercase',
+          }}
+        >
+          Loading...
+        </span>
+      )}
     </div>
   )
 }
